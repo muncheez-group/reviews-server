@@ -17,7 +17,7 @@ app.get('/api', function(req, res){
   // console.log('hello')
   // console.log(req.params)
   console.log('find one triggered')
-  var place_id = 'ChIJK6Yru_GAhYARLzuWvZIgCc4'
+  var place_id = 'ChIJO7u9q5-AhYARiSSXyWv9eJ8'
   Stores.findOne(place_id)
   .then(function(data) {
     console.log('data ', data)

@@ -6,9 +6,7 @@ body {
   margin: 0px;
   color: #101820;
   background-color: #F1F1F2;
-  letter-spacing: .013em;
-
-
+  letter-spacing: .015em;
 }
 
 
@@ -20,6 +18,29 @@ body {
   background-color: #FFFFFF;
   padding-left: 2rem;
   padding-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.reviews-modal-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 10em;
+  background-color: #FFFFFF;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.reviews-modal {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: .086em;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem
 }
 
 .reviews-title {
@@ -30,16 +51,13 @@ body {
   padding-left: 2rem;
   padding-bottom: 2rem
 }
-.reviews-title-google {
+
+.reviews-title-stars, .reviews-title-google  {
   padding-right: 2rem;
   font-size: 15px;
   font-weight: 400;
 
 }
-.reviews-title-stars {
-
-}
-
 
 .review-container {
   display: flex;
@@ -49,8 +67,39 @@ body {
   padding-right: 2rem;
   padding-bottom: 2rem;
   border-top: 1px #d0d2d3 solid;
+}
+
+.review-container-footer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-top: 1px #d0d2d3 solid;
+  text-align: center;
+}
+
+.reviews-modal-footer{
+  text-align: center;
+}
+
+.reviews-footer-btn {
+  font-size: 13px;
+  margin:auto;
+  display:block;
+  border: 2px solid #b70038;
+  color: #b70038;
+  text-transform: uppercase;
+  text-shadow: none;
+  height:40px;
+  width: 192px;
+}
+
+.reviews-footer-btn:hover {
+  background-color: #b70038;
+  color: white;
 
 }
+
 
 .review-profile-pic {
   display: flex;
@@ -60,7 +109,7 @@ body {
 }
 
 .review-column {
-  padding-left: 3rem;
+  padding-left: 4rem;
   display: flex;
   flex-direction: column;
   color: #101820;
