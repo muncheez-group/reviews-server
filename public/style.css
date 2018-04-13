@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   width: 60%;
   margin-left: 10em;
+  margin-right: 10em;
   background-color: #FFFFFF;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -34,6 +35,15 @@ body {
   margin-bottom: 2rem;
 }
 
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 2rem;
+  padding: 2rem;
+
+}
+
 .reviews-modal {
   display: flex;
   flex-direction: column;
@@ -47,13 +57,12 @@ body {
   display: flex;
   flex-direction: row;
   letter-spacing: .086em;
-  padding-top: 2rem;
-  padding-left: 2rem;
-  padding-bottom: 2rem
+  padding: 2rem;
 }
 
 .reviews-title-stars, .reviews-title-google  {
   padding-right: 2rem;
+  padding-left: 2rem;
   font-size: 15px;
   font-weight: 400;
 
@@ -62,10 +71,7 @@ body {
 .review-container {
   display: flex;
   flex-direction: row;
-  padding-top: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem;
   border-top: 1px #d0d2d3 solid;
 }
 
@@ -83,21 +89,22 @@ body {
 }
 
 .reviews-footer-btn {
-  font-size: 13px;
+  font-size: 13px !important;
   margin:auto;
   display:block;
-  border: 2px solid #b70038;
-  color: #b70038;
+  border: 2px solid #b70038 !important;
+  color: #b70038 !important;
   text-transform: uppercase;
-  text-shadow: none;
-  height:40px;
-  width: 192px;
+  text-shadow: none !important;
+  height:40px !important;
+  width: 192px !important;
+  box-shadow: none !important;
+  background-color: white !important;
 }
 
 .reviews-footer-btn:hover {
-  background-color: #b70038;
-  color: white;
-
+  background-color: #b70038 !important;
+  color: white !important;
 }
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
+import { Button, Icon, Card, Row, Col, Modal } from 'react-materialize';
+
 
 const customStyles = {
   content : {
@@ -13,6 +15,16 @@ const customStyles = {
   }
 };
 
+const modalStyle = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: '9999',
+      background: '#fff',
+      width: '50vw'
+    }
+
 
 // Reviews app
 export default class App extends React.Component {
@@ -20,32 +32,32 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false,
+      // modalIsOpen: false,
       reviewList: [],
       rating: '',
     };
     this.fetchReviews = this.fetchReviews.bind(this)
     // Modal Stuff
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    // this.openModal = this.openModal.bind(this);
+    // this.afterOpenModal = this.afterOpenModal.bind(this);
+    // this.closeModal = this.closeModal.bind(this);
   }
   componentDidMount() {
     this.fetchReviews();
   }
-
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
+  //
+  // openModal() {
+  //   this.setState({modalIsOpen: true});
+  // }
+  //
+  // afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   this.subtitle.style.color = '#f00';
+  // }
+  //
+  // closeModal() {
+  //   this.setState({modalIsOpen: false});
+  // }
 
   fetchReviews() {
     let context = this;
@@ -73,57 +85,96 @@ export default class App extends React.Component {
      return result
    }
 
+   render() {
+     var stars = this.generateStars(this.state.rating)
+     return (
+       <div className="reviews-container">
+         <div className="reviews-title">
+           <div className="reviews-title-google">GOOGLE REVIEWS</div>
+           <div className="reviews-title-stars">{this.state.rating} {stars}</div>
+         </div>
+         {this.state.reviewList.map((review, index) =>
+           <Review
+           key={index}
+           review={review}
+           />
+         )}
+       <div className='review-container-footer'>
 
-
-  render() {
-    var stars = this.generateStars(this.state.rating)
-    return (
-      <div className="reviews-container">
-        <div className="reviews-title">
-          <div className="reviews-title-google">GOOGLE REVIEWS</div>
-          <div className="reviews-title-stars">{this.state.rating} {stars}</div>
-        </div>
-        {this.state.reviewList.map((review, index) =>
-          <Review
-          key={index}
-          review={review}
-          />
-        )}
-      <div className='review-container-footer'>
-        <button onClick={this.openModal} className="reviews-footer-btn">MORE REVIEWS</button>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-          reviewList={this.state.reviewList}
-        >
-        <div className='reviews-container'>
-          <div className="reviews-title">
-            <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
-            <div className="reviews-title-stars">{this.state.rating}★★★★</div>
-          </div>
-
-
-            {this.state.reviewList.map((review, index) =>
-              <Review
-              key={index}
-              review={review}
-              />
-            )}
-
-            <div className='review-container-footer'>
-              <div className="reviews-modal-footer">END OF RESULTS</div>
+         <Modal
+          trigger={<Button className="reviews-footer-btn">MORE REVIEWS</Button>}>
+          <div className='modal-container'>
+            <div className="reviews-title">
+              <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
+              <div className="reviews-title-stars">{this.state.rating}★★★★</div>
             </div>
-          </div>
+              {this.state.reviewList.map((review, index) =>
+                <Review
+                key={index}
+                review={review}
+                />
+              )}
 
+              <div className='review-container-footer'>
+                <div className="reviews-modal-footer">END OF RESULTS</div>
+              </div>
+            </div>
         </Modal>
-      </div>
-    </div>
-    );
-  }
-}
+       </div>
+     </div>
+     );
+   }
+   }
+
+
+
+//   render() {
+//     var stars = this.generateStars(this.state.rating)
+//     return (
+//       <div className="reviews-container">
+//         <div className="reviews-title">
+//           <div className="reviews-title-google">GOOGLE REVIEWS</div>
+//           <div className="reviews-title-stars">{this.state.rating} {stars}</div>
+//         </div>
+//         {this.state.reviewList.map((review, index) =>
+//           <Review
+//           key={index}
+//           review={review}
+//           />
+//         )}
+//       <div className='review-container-footer'>
+//         <button onClick={this.openModal} className="reviews-footer-btn">MORE REVIEWS</button>
+//         <Modal
+//           dialogClassName="my-modal"
+//           isOpen={this.state.modalIsOpen}
+//           onAfterOpen={this.afterOpenModal}
+//           onRequestClose={this.closeModal}
+//           style={modalStyle}
+//           contentLabel="Reviews Modal"
+//         >
+//         <div className='reviews-container'>
+//           <div className="reviews-title">
+//             <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
+//             <div className="reviews-title-stars">{this.state.rating}★★★★</div>
+//           </div>
+//             {this.state.reviewList.map((review, index) =>
+//               <Review
+//               key={index}
+//               review={review}
+//               />
+//             )}
+//
+//             <div className='review-container-footer'>
+//               <div className="reviews-modal-footer">END OF RESULTS</div>
+//             </div>
+//           </div>
+//
+//         </Modal>
+//       </div>
+//     </div>
+//     );
+//   }
+// }
 
 
 class Review extends React.Component {
