@@ -15,19 +15,18 @@ var storeSchema = mongoose.Schema({
 var Store = mongoose.model('Store', storeSchema);
 
 var findAll = (callback) => {
-  console.log('findall triggered')
+  // console.log('findall triggered')
    return Store.find({}).sort({createdAt: -1});
 }
 
-
 var findOne = (id, callback) => {
-  console.log('find one db triggered with ', id)
+  // console.log('find one db triggered with ', id)
   return Store.find({ place_id: id}, callback);
 }
 
 
 var insertOne = (store, callback) => {
-  console.log('NEW STORE', store)
+  // console.log('NEW STORE', store)
   Store.create(store, callback);
 }
 

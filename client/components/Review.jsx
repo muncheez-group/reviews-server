@@ -1,11 +1,9 @@
 import React from 'react';
-import moment from 'moment';
 import { Button, Icon, Card, Row, Col, Modal } from 'react-materialize';
 
-class Review extends React.Component {
+export default class Review extends React.Component {
  constructor(props) {
    super(props);
-
  }
 
  generateStars(num) {
