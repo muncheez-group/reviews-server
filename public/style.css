@@ -89,22 +89,22 @@ body {
 }
 
 .reviews-footer-btn {
-  font-size: 13px !important;
-  margin:auto !important;
-  display:block !important;
-  border: 2px solid #b70038 !important;
-  color: #b70038 !important;
+  font-size: 13px;
+  margin:auto;
+  display:block;
+  border: 2px solid #b70038;
+  color: #b70038;
   text-transform: uppercase;
-  text-shadow: none !important;
-  height:40px !important;
-  width: 192px !important;
-  box-shadow: none !important;
+  text-shadow: none;
+  height:40px;
+  width: 192px;
+  box-shadow: none;
   background-color: white !important;
 }
 
 .reviews-footer-btn:hover {
   background-color: #b70038 !important;
-  color: white !important;
+  color: white;
 }
 
 

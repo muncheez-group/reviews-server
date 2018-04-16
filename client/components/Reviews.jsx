@@ -1,6 +1,6 @@
 import React from 'react';
 import Review from './Review.jsx';
-import { Button, Icon, Card, Row, Col, Modal } from 'react-materialize';
+import { Modal } from 'react-materialize';
 
 
 // Reviews app
@@ -62,28 +62,27 @@ export default class Reviews extends React.Component {
            />
          )}
        <div className='review-container-footer'>
-
          <Modal
-          trigger={<Button className="reviews-footer-btn">MORE REVIEWS</Button>}>
+          trigger={<button className="reviews-footer-btn">MORE REVIEWS</button>}>
           <div className='modal-container'>
             <div className="reviews-title">
               <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
               <div className="reviews-title-stars">{this.state.rating}★★★★</div>
             </div>
-              {this.state.reviewList.map((review, index) =>
-                <Review
-                key={index}
-                review={review}
-                />
-              )}
-              <div className='review-container-footer'>
-                <div className="reviews-modal-footer"><center>END OF RESULTS</center></div>
-              </div>
+            {this.state.reviewList.map((review, index) =>
+              <Review
+              key={index}
+              review={review}
+              />
+            )}
+            <div className='review-container-footer'>
+              <div className="reviews-modal-footer"><center>END OF RESULTS</center></div>
             </div>
+          </div>
         </Modal>
-       </div>
-     </div>
-     );
+      </div>
+    </div>
+    );
    }
  }
 

@@ -36,19 +36,19 @@ export default class Review extends React.Component {
  render() {
     var review = this.props.review[0]
     var stars = this.generateStars(review.rating)
-    var description = `${stars}  ${review.text}`;
+    var reviewBody = `${stars}  ${review.text}`;
 
     let component = null
-    if (!this.state.exapnded) {
+    if (!this.state.expanded) {
       component = <LinesEllipsis
-       text= {description}
+       text= {reviewBody}
        maxLine='3'
        ellipsis= '... See More'
        trimRight
        basedOn='letters'
        />
-    } if (this.state.expanded) {
-      component = description
+    } else if (this.state.expanded) {
+      component = reviewBody
     }
 
     return (
