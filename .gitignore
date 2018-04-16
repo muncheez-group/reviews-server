@@ -1,2 +1,5 @@
 ## NPM ##
 node_modules/
+
+/public/app.js
+/public/transpiled
