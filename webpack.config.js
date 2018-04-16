@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname + '/client',
-  entry: './index.js',
+  entry: './components/Reviews.jsx',
   module: {
     loaders: [
       {

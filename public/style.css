@@ -13,7 +13,7 @@ body {
 .reviews-container {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: %;
   margin-left: 10em;
   margin-right: 10em;
   background-color: #FFFFFF;
@@ -41,7 +41,6 @@ body {
   width: 100%;
   margin: 2rem;
   padding: 2rem;
-
 }
 
 .reviews-modal {
@@ -58,12 +57,13 @@ body {
   flex-direction: row;
   letter-spacing: .086em;
   padding: 2rem;
+  font-size: 14px;
 }
 
 .reviews-title-stars, .reviews-title-google  {
   padding-right: 2rem;
   padding-left: 2rem;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
 
 }
@@ -90,8 +90,8 @@ body {
 
 .reviews-footer-btn {
   font-size: 13px !important;
-  margin:auto;
-  display:block;
+  margin:auto !important;
+  display:block !important;
   border: 2px solid #b70038 !important;
   color: #b70038 !important;
   text-transform: uppercase;
@@ -125,13 +125,13 @@ body {
 
 .review-column-name {
   padding-bottom: 1rem;
-  font-size: 13px
+  font-size: 13px;
 
 }
 .review-column-date {
   padding-bottom: 1rem;
   font-weight: 300;
-  font-size: 13px
+  font-size: 13px;
 
 }
 
@@ -139,13 +139,9 @@ body {
   padding-bottom: 1rem;
   font-size: 13px;
   line-height: 1.6;
-
-
 }
 
 
 .reviews-container {
   margin-left: 5em;
 }
-
-/* {moment(review[0].time)} */

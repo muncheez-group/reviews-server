@@ -1,21 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import Modal from 'react-modal';
+import { Button, Icon, Card, Row, Col, Modal } from 'react-materialize';
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
-
-export default class Review extends React.Component {
+class Review extends React.Component {
  constructor(props) {
    super(props);
+
  }
 
  generateStars(num) {
@@ -54,3 +44,5 @@ export default class Review extends React.Component {
    )
  }
 }
+
+window.Review = Review

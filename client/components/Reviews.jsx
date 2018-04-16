@@ -27,7 +27,7 @@ const modalStyle = {
 
 
 // Reviews app
-export default class App extends React.Component {
+export default class Reviews extends React.Component {
   constructor(props) {
     super(props);
 
@@ -116,7 +116,7 @@ export default class App extends React.Component {
               )}
 
               <div className='review-container-footer'>
-                <div className="reviews-modal-footer">END OF RESULTS</div>
+                <div className="reviews-modal-footer"><center>END OF RESULTS</center></div>
               </div>
             </div>
         </Modal>
@@ -124,7 +124,9 @@ export default class App extends React.Component {
      </div>
      );
    }
-   }
+ }
+
+ window.Reviews = Reviews
 
 
 
@@ -176,49 +178,49 @@ export default class App extends React.Component {
 //   }
 // }
 
-
-class Review extends React.Component {
- constructor(props) {
-   super(props);
-
- }
-
- generateStars(num) {
-   num = Math.floor(num)
-   var star = '★';
-   var emptyStar ='☆'
-   var result = '';
-   for (var i = 0; i < 5; i++) {
-     if (i<num) {
-       result += star;
-     } else {
-       result += emptyStar;
-       console.log(result)
-     }
-   }
-   return result
- }
-
-
- render() {
-   var review = this.props.review[0]
-   var stars = this.generateStars(review.rating)
-
-   return (
-     <div className="review-container">
-       <div className="review-profile-pic">
-       <img src={review.profile_photo_url} width={70} height={70}/>
-       </div>
-       <div className="review-column">
-         <div className="review-column-name">{review.author_name}</div>
-         <div className="review-column-date">{review.relative_time_description}</div>
-         <div className="review-column-text">{stars}  {review.text}
-         </div>
-       </div>
-   </div>
-   )
- }
-}
+//
+// class Review extends React.Component {
+//  constructor(props) {
+//    super(props);
+//
+//  }
+//
+//  generateStars(num) {
+//    num = Math.floor(num)
+//    var star = '★';
+//    var emptyStar ='☆'
+//    var result = '';
+//    for (var i = 0; i < 5; i++) {
+//      if (i<num) {
+//        result += star;
+//      } else {
+//        result += emptyStar;
+//        console.log(result)
+//      }
+//    }
+//    return result
+//  }
+//
+//
+//  render() {
+//    var review = this.props.review[0]
+//    var stars = this.generateStars(review.rating)
+//
+//    return (
+//      <div className="review-container">
+//        <div className="review-profile-pic">
+//        <img src={review.profile_photo_url} width={70} height={70}/>
+//        </div>
+//        <div className="review-column">
+//          <div className="review-column-name">{review.author_name}</div>
+//          <div className="review-column-date">{review.relative_time_description}</div>
+//          <div className="review-column-text">{stars}  {review.text}
+//          </div>
+//        </div>
+//    </div>
+//    )
+//  }
+// }
 
 
 
