@@ -25,13 +25,11 @@ body {
 .reviews-modal-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin-left: 10em;
+  max-width: 100%;
+  margin: 0em;
   background-color: #FFFFFF;
   padding-left: 2rem;
   padding-right: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .modal-container {
@@ -126,7 +124,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #101820;
-  max-width: 75%;
+  max-width: 90%;
 }
 
 .review-column-name {
