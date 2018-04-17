@@ -1,5 +1,10 @@
 // const server = require('./../server.js');
 const db = require('./../db/models/store.js')
+// Notes:
+// 1. Data must be seeded into Mongodb by running npm run seed.
+// 2. Mongodb must be started by using mongod from terminal
+// 3. use database 'apateez'
+
 
 var place_id = 'ChIJO7u9q5-AhYARiSSXyWv9eJ8'
 
