@@ -65,9 +65,9 @@ export default class Reviews extends React.Component {
          <Modal
           trigger={<button className="reviews-footer-btn">MORE REVIEWS</button>}>
           <div className='modal-container'>
-            <div className="reviews-title">
+            <div className="modal-reviews-title">
               <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
-              <div className="reviews-title-stars">{this.state.rating}★★★★</div>
+              <div className="reviews-title-stars">{this.state.rating}  {stars}</div>
             </div>
             {this.state.reviewList.map((review, index) =>
               <Review
