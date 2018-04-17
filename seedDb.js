@@ -1,5 +1,5 @@
-var fullList = require('.//fullList.json')
-var Stores = require('.//db/models/store.js');
+var fullList = require('./195-Zagat-AllData.json')
+var Stores = require('./db/models/store.js');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/apateez');
@@ -10,9 +10,9 @@ var seedDb = (array) => {
   var createList = () => {
 
     var obj = {
-      place_id: array[counter].place_id,
-      reviews: array[counter].reviews,
-      rating: array[counter].rating
+      place_id: array[counter].result.place_id,
+      reviews: array[counter].result.reviews,
+      rating: array[counter].result.rating
     }
     console.log
 
