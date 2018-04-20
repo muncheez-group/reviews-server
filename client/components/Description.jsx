@@ -1,71 +1,42 @@
 import React from 'react';
-import moment from 'moment'
 
-
-// Reviews app
+// Description app
 export default class Description extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      reviewList: [],
-      rating: '',
+
     };
-    this.fetchReviews = this.fetchReviews.bind(this)
+
   }
   componentDidMount() {
-    this.fetchReviews();
-  }
 
-  fetchReviews() {
-    let context = this;
-    axios.get('/api')
-    .then(({data}) => {
-      console.log('data', data)
-      this.setState({
-        reviewList: data.reviews,
-        rating: data.rating
-      })
-    })
-  }
-
-  generateStar(num) {
-    let star = '★';
-    let result = '';
-    for (var i = 0; i < num; i++) {
-      result += star
-    }
-    return result;
   }
 
   render() {
     return (
       <div className="reviews-container">
-        <div className="reviews-title">
-          <div className="reviews-title-google">GOOGLE REVIEWS</div>
-          <div className="reviews-title-stars">{this.state.rating}★★★★</div>
+        <div className="description-title">RICH TABLE</div>
+        <div className="description-type">Rustic Northern Californian restaurant</div>
+        <div className="description-details">New American · Hayes Valley · $$$</div>
+        <div className="description-divider"></div>
+        <div className="description-apateez-header">THE APATEEA REVIEW</div>
+        <div className="description-ratings-container">
+          <div className="description-ratings-food">4.6 FOOD</div>
+          <div className="description-ratings-decor">4.0 DECOR</div>
+          <div className="description-ratings-service">4.4 SERVICE</div>
         </div>
-        {this.state.reviewList.map((review, index) =>
-          <Review
-          key={index}
-          review={review}
-          generateStar={this.generateStar}
-          />
-        )}
-    </div>);
+        <div className="description-body">LOTS OF STUFF HERE</div>
+      </div>
+    );
   }
 }
 
-//Stateless review
-const Review = ({review, generateStar}) => (
-  <div className="review-container">
-    <div className="review-profile-pic">
-    <img src={review[0].profile_photo_url} width={70} height={70}/>
-    </div>
-    <div className="review-column">
-      <div className="review-column-name">{review[0].author_name}</div>
-      <div className="review-column-date">{review[0].relative_time_description}</div>
-      <div className="review-column-text">{review[0].rating}★  {review[0].text}</div>
-    </div>
+window.Description = Description
 
-</div>)
+
+
+ReactDOM.render(
+  React.createElement(Description),
+  document.getElementById('description')
+);

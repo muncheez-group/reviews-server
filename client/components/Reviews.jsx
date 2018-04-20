@@ -1,5 +1,6 @@
 import React from 'react';
 import Review from './Review.jsx';
+import Description from './Description.jsx';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -65,7 +66,7 @@ export default class Reviews extends React.Component {
     let context = this;
     axios.get('/api')
     .then(({data}) => {
-      console.log('data', data)
+      // console.log('data', data)
       this.setState({
         reviewList: data.reviews,
         rating: data.rating,
@@ -135,3 +136,8 @@ export default class Reviews extends React.Component {
    }
  }
  window.Reviews = Reviews
+
+ ReactDOM.render(
+   React.createElement(Reviews),
+   document.getElementById('reviews')
+ );

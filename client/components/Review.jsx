@@ -27,7 +27,7 @@ export default class Review extends React.Component {
        result += star;
      } else {
        result += emptyStar;
-       console.log(result)
+       // console.log(result)
      }
    }
    return result
