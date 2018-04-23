@@ -67,7 +67,7 @@ window.Description = Description
 
 
 
-ReactDOM.render(
-  React.createElement(Description),
-  document.getElementById('description')
-);
+// ReactDOM.render(
+//   React.createElement(Description),
+//   document.getElementById('description')
+// );
