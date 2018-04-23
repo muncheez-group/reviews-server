@@ -5,7 +5,7 @@ export default class Description extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'RICH TABLE',
+      title: '',
       type: 'Rustic Northern Californian restaurant',
       foodScore: '4.6',
       decorScore: '4.0',
@@ -17,14 +17,15 @@ export default class Description extends React.Component {
   }
   componentDidMount() {
     this.fetchReviews();
-
   }
 
   fetchReviews() {
     let context = this;
-    axios.get('/api')
+    let id = window.location.href.split('/')[4]
+    console.log('id is ', id)
+    axios.get(`/api/restaurants/${id}`)
     .then(({data}) => {
-      console.log('data', data)
+      console.log('data is ', data)
       this.setState({
         title: data.name,
       })

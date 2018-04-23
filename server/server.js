@@ -13,25 +13,26 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.get('/restaurants/:id', function(req, res) {
-  var place_id = 'req.params.id'
 
+app.use('/restaurants', express.static(path.join(__dirname, '../public')));
+
+app.get('/restaurants/:id', function(req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
-app.get('/api', function(req, res) {
-  // console.log('hello')
-  // console.log(req.params)
-  console.log('find one triggered')
-  var place_id = 'ChIJO7u9q5-AhYARiSSXyWv9eJ8'
+app.get('/api/restaurants/:id', function(req, res) {
+  var place_id = req.params.id
+  console.log('place_id IS :', place_id)
   Stores.findOne(place_id)
   .then(function(data) {
     console.log('data ', data)
     res.send(data[0])
   })
-});
+})
 
 
-app.use(express.static(path.join(__dirname, '../public')));
+
+
 
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
