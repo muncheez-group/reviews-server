@@ -2,7 +2,7 @@ var fullList = require('./195-Zagat-AllData.json')
 var Stores = require('./db/models/store.js');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/apateez');
+mongoose.connect('mongodb://localhost/apateez-reviews');
 
 var seedDb = (array) => {
   let counter = 0

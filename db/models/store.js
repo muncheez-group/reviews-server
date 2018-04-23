@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/apateez');
+mongoose.connect('mongodb://localhost/apateez-reviews');
 
 var storeSchema = mongoose.Schema({
   place_id: {
