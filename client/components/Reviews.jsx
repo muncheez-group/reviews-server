@@ -139,8 +139,8 @@ export default class Reviews extends React.Component {
    }
  }
  window.Reviews = Reviews
-
- ReactDOM.render(
-   React.createElement(Reviews),
-   document.getElementById('reviews')
- );
+ //
+ // ReactDOM.render(
+ //   React.createElement(Reviews),
+ //   document.getElementById('reviews')
+ // );
