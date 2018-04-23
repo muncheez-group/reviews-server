@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.get('/api', function(req, res){
+app.get('/restaurants/:id', function(req, res) {
+  var place_id = 'req.params.id'
+
+})
+
+app.get('/api', function(req, res) {
   // console.log('hello')
   // console.log(req.params)
   console.log('find one triggered')

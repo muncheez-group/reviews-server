@@ -12,10 +12,23 @@ export default class Description extends React.Component {
       serviceScore: '4.4',
       descriptionBody: `'Inventive” yet “approachable”, this Hayes Valley “destination” by Evan and Sarah Rich “wows” with its “unique”, “delectable” Californian dishes matched by a “killer wine list” and “warm” service in a minimalist (and “loud”) space adorned with salvaged barn wood; it's “hard to get into” (though walk-ins can sit at the bar or the communal table) and the “pricey”, “locally sourced” menu “changes” often, but “if the stars align, you will leave sockless`,
     };
+    this.fetchReviews = this.fetchReviews.bind(this)
 
   }
   componentDidMount() {
+    this.fetchReviews();
 
+  }
+
+  fetchReviews() {
+    let context = this;
+    axios.get('/api')
+    .then(({data}) => {
+      console.log('data', data)
+      this.setState({
+        title: data.name,
+      })
+    })
   }
 
   render() {
@@ -30,7 +43,7 @@ export default class Description extends React.Component {
         </div>
 
         <div className="description-divider"></div>
-        <div className="description-apateez-header">THE APATEEA REVIEW</div>
+        <div className="description-apateez-header">THE APATEEZ REVIEW</div>
         <div className="description-ratings-container">
           <div className="description-ratings-food">{this.state.foodScore}
             <div className="description-ratings-label">FOOD</div>

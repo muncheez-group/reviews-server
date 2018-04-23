@@ -64,7 +64,7 @@ export default class Reviews extends React.Component {
 
   fetchReviews() {
     let context = this;
-    axios.get('/api')
+    axios.get('/api/restaurants/:id')
     .then(({data}) => {
       // console.log('data', data)
       this.setState({
@@ -73,6 +73,8 @@ export default class Reviews extends React.Component {
       })
     })
   }
+
+
    generateStars(num) {
      num = Math.floor(num)
      var star = '★';

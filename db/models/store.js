@@ -6,6 +6,7 @@ var storeSchema = mongoose.Schema({
     type: String,
     unique: true
   },
+  name: String,
   reviews: [
     []
   ],
