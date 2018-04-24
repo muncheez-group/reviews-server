@@ -9,8 +9,6 @@ body {
   letter-spacing: .018em;
 }
 
-
-
 .description-title {
   padding: 1rem 1rem 0.25rem;
   font-size: 28px;
@@ -105,7 +103,6 @@ body {
 .reviews-modal-container {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: 0em;
   background-color: #FFFFFF;
   padding-left: 2rem;
@@ -115,7 +112,6 @@ body {
 .modal-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .modal-reviews-title {
