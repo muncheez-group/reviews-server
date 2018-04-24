@@ -7,6 +7,8 @@ var storeSchema = mongoose.Schema({
     unique: true
   },
   name: String,
+  price_level: Number,
+  neighborhood: String,
   reviews: [
     []
   ],

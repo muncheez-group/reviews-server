@@ -10,7 +10,8 @@ export default class Description extends React.Component {
     super(props);
     this.state = {
       title: '',
-      type: 'Rustic Northern Californian restaurant',
+      neighborhood: 'Rustic Northern Californian restaurant',
+      price_level: 1,
       foodScore: '4.6',
       decorScore: '4.0',
       serviceScore: '4.4',
@@ -38,19 +39,36 @@ export default class Description extends React.Component {
       console.log('data is ', data)
       this.setState({
         title: data.name,
+        neighborhood: data.neighborhood,
+        price_level: data.price_level,
       })
     })
+    console.log('this.state.price_level', this.state.price_level)
+    console.log('this.state.neighborhood', this.state.neighborhood)
   }
 
+
+
   render() {
+
+    let priceRange = [];
+    for (var i = 0; i < this.state.price_level; i++) {
+      priceRange.push('$');
+    }
+
+    let dollar = priceRange.map((dollar) => {
+      return dollar;
+    })
+
+
     return (
       <div className="reviews-container">
         <div className="description-title">{this.state.title}</div>
         <div className="description-type">{this.state.type}</div>
         <div className="description-details-container">
-          <div className="description-details">New American</div><div className='desription-details-seperator'>·</div>
-          <div className="description-details">Hayes Valley</div><div className='desription-details-seperator'>·</div>
-          <div className="description-details">$$$</div>
+          <div className="description-details">{this.state.neighborhood}</div><div className='desription-details-seperator'>·</div>
+
+          <div className="description-details">{dollar}</div>
         </div>
         <div className="logo-container">
           <img src="https://s3-us-west-1.amazonaws.com/apateezassets/apateez-logo-small-red.jpeg" className='apateez-logo'/>

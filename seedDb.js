@@ -13,9 +13,11 @@ var seedDb = (array) => {
       place_id: array[counter].result.place_id,
       name: array[counter].result.name,
       reviews: array[counter].result.reviews,
-      rating: array[counter].result.rating
+      rating: array[counter].result.rating,
+      price_level: array[counter].result.price_level,
+      neighborhood: array[counter].result.address_components[2].long_name
     }
-    console.log
+
 
     Stores.insertOne(obj, (err, content) => {
       if (err) {
