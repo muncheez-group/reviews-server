@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
+import '../style.css';
 
 // Description app
 export default class Description extends React.Component {
