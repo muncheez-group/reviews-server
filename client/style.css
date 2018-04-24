@@ -9,6 +9,29 @@ body {
   letter-spacing: .018em;
 }
 
+.reviews-details-ratings-stars {
+  vertical-align: middle;
+  padding-right: 2px;
+  letter-spacing: .2em;
+  display: inline-block;
+  position: relative;
+  width: 73.5px;
+}
+
+.reviews-details-ratings-stars-top {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #101820;
+  position: absolute;
+  overflow: hidden;
+}
+
+.reviews-details-ratings-stars-bottom {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #CFD1D2;
+}
+
 .logo-container {
   display: inline-block;
   position: relative;

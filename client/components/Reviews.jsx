@@ -99,6 +99,12 @@ export default class Reviews extends React.Component {
      var stars = this.generateStars(this.state.rating) // Add stars to reviews
      var shortReviewArr = this.state.reviewList.slice(0,3); // Return first 3 reviews only
 
+     var starsPercentage = (googleRating) => {
+      var percent = googleRating / 5 * 100;
+      // console.log('Percent: ', percent + '%')
+      return percent + '%';
+    }
+
      return (
        <div>
          <Modal
@@ -126,7 +132,15 @@ export default class Reviews extends React.Component {
          <div className="reviews-container">
            <div className="reviews-title">
              <div className="reviews-title-google">GOOGLE REVIEWS</div>
-             <div className="reviews-title-stars">{this.state.rating} {stars}</div>
+             <div className="reviews-title-stars"><span>{this.state.rating}   </span>
+               <div className="reviews-details-ratings-stars">
+                <div className="reviews-details-ratings-stars-top" style={{width: starsPercentage(this.state.rating)}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div className="reviews-details-ratings-stars-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              </div>
+            </div>
+
+
+
            </div>
            {shortReviewArr.map((review, index) =>
              <Review
