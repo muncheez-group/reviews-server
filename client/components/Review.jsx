@@ -35,8 +35,12 @@ export default class Review extends React.Component {
 
  render() {
     var review = this.props.review[0]
-    var stars = this.generateStars(review.rating)
-    var reviewBody = `${stars}  ${review.text}`;
+    var reviewBody = `${review.text}`;
+
+    var starsPercentage = (googleRating) => {
+     var percent = googleRating / 5 * 100;
+     return percent + '%';
+    }
 
     let component = null
     if (!this.state.expanded) {
@@ -54,17 +58,20 @@ export default class Review extends React.Component {
     return (
       <div className="review-container">
         <div className="review-profile-pic">
-        <img src={review.profile_photo_url} width={70} height={70}/>
+          <img src={review.profile_photo_url} width={70} height={70}/>
         </div>
         <div className="review-column" onClick={() => this.expandDescription()}>
           <div className="review-column-name">{review.author_name}</div>
           <div className="review-column-date">{review.relative_time_description}</div>
-          <div className="review-column-text">{component}</div>
+          <div className="reviews-details-ratings-stars">
+            <div className="reviews-details-ratings-stars-top" style={{width: starsPercentage(review.rating)}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div className="reviews-details-ratings-stars-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+         </div>
+          <div className="review-column-text">
+            {component}
+          </div>
         </div>
     </div>
     )
   }
  }
-
-
-window.Review = Review

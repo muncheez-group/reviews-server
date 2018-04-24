@@ -242,12 +242,12 @@ body {
 }
 
 .review-column-name {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   font-size: 13px;
 
 }
 .review-column-date {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   font-weight: 300;
   font-size: 13px;
 
