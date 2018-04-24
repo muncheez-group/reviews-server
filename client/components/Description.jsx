@@ -33,18 +33,15 @@ export default class Description extends React.Component {
   fetchReviews() {
     let context = this;
     let id = window.location.href.split('/')[4]
-    console.log('id is ', id)
+
     axios.get(`http://localhost:3003/api/restaurants/${id}`)
     .then(({data}) => {
-      console.log('data is ', data)
       this.setState({
         title: data.name,
         neighborhood: data.neighborhood,
         price_level: data.price_level,
       })
     })
-    console.log('this.state.price_level', this.state.price_level)
-    console.log('this.state.neighborhood', this.state.neighborhood)
   }
 
 
