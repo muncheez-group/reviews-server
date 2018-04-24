@@ -2,18 +2,18 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3003;
+// const port = process.env.PORT || 3003;
+const port =  3003;
 const Stores = require('./../db/models/store.js');
 
 
 const bodyParser = require('body-parser');
 
-app.all('/', function(req, res, next) {
-  res.set('Content-Type', 'text/plain');
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
- });
+});
 
 
 app.use(morgan('dev'));

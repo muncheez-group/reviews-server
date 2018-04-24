@@ -23,7 +23,7 @@ export default class Description extends React.Component {
     let context = this;
     let id = window.location.href.split('/')[4]
     console.log('id is ', id)
-    axios.get(`/api/restaurants/${id}`)
+    axios.get(`http://localhost:3003/api/restaurants/${id}`)
     .then(({data}) => {
       console.log('data is ', data)
       this.setState({
