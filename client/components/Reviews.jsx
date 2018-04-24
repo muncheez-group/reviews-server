@@ -116,7 +116,12 @@ export default class Reviews extends React.Component {
           <div className='reviews-modal-container'>
             <div className="reviews-title">
               <div ref={subtitle => this.subtitle = subtitle} className="reviews-title-google">GOOGLE REVIEWS</div>
-              <div className="reviews-title-stars">{this.state.rating}  {stars}</div>
+                <div className="reviews-title-stars"><span>{this.state.rating}   </span>
+                  <div className="reviews-details-ratings-stars">
+                   <div className="reviews-details-ratings-stars-top" style={{width: starsPercentage(this.state.rating)}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                   <div className="reviews-details-ratings-stars-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                 </div>
+               </div>
             </div>
             {this.state.reviewList.map((review, index) =>
               <Review
