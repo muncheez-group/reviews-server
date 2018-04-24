@@ -10,7 +10,9 @@ export default class Description extends React.Component {
     super(props);
     this.state = {
       title: '',
-      neighborhood: 'Rustic Northern Californian restaurant',
+      neighborhood: '',
+      city: '',
+      street: '',
       price_level: 1,
       foodScore: '4.6',
       decorScore: '4.0',
@@ -40,6 +42,8 @@ export default class Description extends React.Component {
         title: data.name,
         neighborhood: data.neighborhood,
         price_level: data.price_level,
+        city: data.city,
+        street: data.street
       })
     })
   }
@@ -61,10 +65,9 @@ export default class Description extends React.Component {
     return (
       <div className="reviews-container">
         <div className="description-title">{this.state.title}</div>
-        <div className="description-type">{this.state.type}</div>
+        <div className="description-type">{this.state.city} {this.state.street} Restaurant</div>
         <div className="description-details-container">
           <div className="description-details">{this.state.neighborhood}</div><div className='desription-details-seperator'>·</div>
-
           <div className="description-details">{dollar}</div>
         </div>
         <div className="logo-container">

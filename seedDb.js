@@ -15,7 +15,9 @@ var seedDb = (array) => {
       reviews: array[counter].result.reviews,
       rating: array[counter].result.rating,
       price_level: array[counter].result.price_level,
-      neighborhood: array[counter].result.address_components[2].long_name
+      neighborhood: array[counter].result.address_components[2].long_name,
+      city: array[counter].result.address_components[3].long_name,
+      street: array[counter].result.address_components[1].long_name
     }
 
 

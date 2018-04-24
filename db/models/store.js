@@ -12,6 +12,8 @@ var storeSchema = mongoose.Schema({
   reviews: [
     []
   ],
+  city: String,
+  street: String,
   rating: Number
 });
 
