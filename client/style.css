@@ -104,7 +104,7 @@ body {
 }
 
 .reviews-container, .description-container {
-  max-width: 65em;
+  max-width: 65%;
   display: flex;
   flex-direction: column;
   margin: 2rem 2em 2rem;
