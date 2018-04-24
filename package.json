@@ -36,11 +36,20 @@
   "devDependencies": {
     "css-loader": "^0.28.11",
     "jest": "^22.4.3",
+    "jest-enzyme": "^6.0.0",
     "style-loader": "^0.21.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/apateez/reviews.git"
+  },
+  "jest": {
+  "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+  "unmockedModulePathPatterns": [
+    "react",
+    "enzyme",
+    "jest-enzyme"
+  ]
   },
   "author": "",
   "license": "ISC",
