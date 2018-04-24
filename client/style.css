@@ -8,6 +8,7 @@ body {
   background-color: #F1F1F2;
   letter-spacing: .018em;
 }
+
 .logo-container {
   display: inline-block;
   position: relative;
@@ -15,13 +16,10 @@ body {
 
 .apateez-logo {
   border-radius: 50%;
-  width: 25px;
+  width: 30px;
   position: absolute;
   left: 800px;
-  top: 13px;
-
-
-
+  top: 11px;
 }
 
 .description-title {
