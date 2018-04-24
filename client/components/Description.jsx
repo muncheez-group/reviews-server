@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios'
 import '../style.css';
 
+
 // Description app
 export default class Description extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Description extends React.Component {
       foodScore: '4.6',
       decorScore: '4.0',
       serviceScore: '4.4',
-      descriptionBody: `'Inventive” yet “approachable”, this Hayes Valley “destination” by Evan and Sarah Rich “wows” with its “unique”, “delectable” Californian dishes matched by a “killer wine list” and “warm” service in a minimalist (and “loud”) space adorned with salvaged barn wood; it's “hard to get into” (though walk-ins can sit at the bar or the communal table) and the “pricey”, “locally sourced” menu “changes” often, but “if the stars align, you will leave sockless`,
+      descriptionBody: `<b>"Inventive”</b> yet <b>“approachable”</b>, this Hayes Valley <b>“destination”</b> by Evan and Sarah Rich <b>“wows”</b> with its <b>“unique”</b>, <b>“delectable”</b> Californian dishes matched by a <b>“killer wine list”</b> and <b>“warm”</b> service in a minimalist (and <b>“loud”</b>) space adorned with salvaged barn wood; it's <b>“hard to get into”</b> (though walk-ins can sit at the bar or the communal table) and the <b>“pricey”</b>, <b>“locally sourced”</b> menu <b>“changes”</b> often, but <b>“if the stars align, you will leave sockless"</b>.`,
     };
     this.fetchReviews = this.fetchReviews.bind(this)
 
@@ -21,6 +22,12 @@ export default class Description extends React.Component {
   componentDidMount() {
     this.fetchReviews();
   }
+
+
+  createMarkup() {
+  return {__html: this.state.descriptionBody};
+  }
+
 
   fetchReviews() {
     let context = this;
@@ -61,8 +68,9 @@ export default class Description extends React.Component {
             <div className="description-ratings-label">SERVICE</div>
           </div>
         </div>
-        <div className="description-body">{this.state.descriptionBody}
-        </div>
+
+        <div className="description-body" dangerouslySetInnerHTML={this.createMarkup()}/>
+
       </div>
     );
   }
