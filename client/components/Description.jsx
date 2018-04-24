@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios'
 
 // Description app
 export default class Description extends React.Component {
