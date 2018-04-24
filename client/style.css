@@ -12,6 +12,7 @@ body {
 .logo-container {
   display: inline-block;
   position: relative;
+  cursor: default;
 }
 
 .apateez-logo {
@@ -107,7 +108,7 @@ body {
   max-width: 65%;
   display: flex;
   flex-direction: column;
-  margin: 2rem 2em 2rem;
+  margin: 3rem 2em 2rem;
   background-color: #FFFFFF;
   padding-left: 2rem;
   padding-right: 2rem;
