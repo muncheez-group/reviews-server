@@ -45,8 +45,10 @@ export default class Description extends React.Component {
           <div className="description-details">Hayes Valley</div><div className='desription-details-seperator'>·</div>
           <div className="description-details">$$$</div>
         </div>
-
-        <div className="description-divider"></div>
+        <div className="logo-container">
+          <img src="https://s3-us-west-1.amazonaws.com/apateezassets/apateez-logo-small-red.jpeg" className='apateez-logo'/>
+          <div className="description-divider"/>
+        </div>
         <div className="description-apateez-header">THE APATEEZ REVIEW</div>
         <div className="description-ratings-container">
           <div className="description-ratings-food">{this.state.foodScore}
