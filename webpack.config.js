@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+var SRC_DIR = path.join(__dirname, '/client');
+var DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
   context: __dirname + '/client',
@@ -8,6 +10,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
+        include : SRC_DIR,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -16,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [‘style-loader’,‘css-loader’]
+        use: ['style-loader','css-loader']
       }
     ],
   },

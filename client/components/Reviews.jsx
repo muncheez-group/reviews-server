@@ -4,6 +4,7 @@ import Description from './Description.jsx';
 import Modal from 'react-modal';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
+import '../style.css';
 
 const customStyles = {
     overlay: {
