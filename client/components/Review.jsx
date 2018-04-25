@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Icon, Card, Row, Col, Modal } from 'react-materialize';
 import LinesEllipsis from 'react-lines-ellipsis'
 
 export default class Review extends React.Component {

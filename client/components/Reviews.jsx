@@ -4,7 +4,6 @@ import Description from './Description.jsx';
 import Modal from 'react-modal';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import '../style.css';
 
 
 const customStyles = {
@@ -162,7 +161,4 @@ export default class Reviews extends React.Component {
    }
  }
 
- ReactDOM.render(
-   React.createElement(Reviews),
-   document.getElementById('reviews')
- );
+window.Reviews = Reviews

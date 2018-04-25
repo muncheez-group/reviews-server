@@ -5,7 +5,7 @@ var DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
   context: __dirname + '/client',
-  entry: './components/Reviews.jsx',
+  entry: './index.jsx',
   module: {
     loaders: [
       {
