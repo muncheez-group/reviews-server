@@ -43,6 +43,9 @@ export default class Description extends React.Component {
         street: data.street
       })
     })
+    .catch((err) => {
+      console.log('ERROR: ', err)
+    })
   }
 
 

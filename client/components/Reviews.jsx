@@ -75,6 +75,9 @@ export default class Reviews extends React.Component {
         rating: data.rating,
       })
     })
+    .catch((err) => {
+      console.log('ERROR: ', err)
+    })
   }
 
    render() {
