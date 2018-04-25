@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 
-
 // Description app
 export default class Description extends React.Component {
   constructor(props) {
@@ -27,14 +26,13 @@ export default class Description extends React.Component {
 
 
   createMarkup() {
-  return {__html: this.state.descriptionBody};
+    return {__html: this.state.descriptionBody}; // Allow for bold
   }
 
 
   fetchReviews() {
     let context = this;
     let id = window.location.href.split('/')[4]
-
     axios.get(`http://localhost:3003/api/restaurants/${id}`)
     .then(({data}) => {
       this.setState({
@@ -50,16 +48,13 @@ export default class Description extends React.Component {
 
 
   render() {
-
     let priceRange = [];
     for (var i = 0; i < this.state.price_level; i++) {
       priceRange.push('$');
     }
-
     let dollar = priceRange.map((dollar) => {
       return dollar;
     })
-
 
     return (
       <div className="reviews-container">
@@ -92,5 +87,3 @@ export default class Description extends React.Component {
     );
   }
 }
-
-window.Description = Description

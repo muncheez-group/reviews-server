@@ -1,12 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Review from './Review.jsx';
 import Description from './Description.jsx';
 import Modal from 'react-modal';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
 
-
-const customStyles = {
+const customStyles = { // modal styles
     overlay: {
       position: 'fixed',
       top: 0,
@@ -78,31 +77,12 @@ export default class Reviews extends React.Component {
     })
   }
 
-
-   generateStars(num) {
-     num = Math.floor(num)
-     var star = '★';
-     var emptyStar ='☆';
-     var result = '';
-     for (var i = 0; i < 5; i++) {
-       if (i<num) {
-         result += star;
-       } else {
-         result += emptyStar;
-       }
-     }
-     return result;
-   }
-
    render() {
-     var stars = this.generateStars(this.state.rating) // Add stars to reviews
-     var shortReviewArr = this.state.reviewList.slice(0,3); // Return first 3 reviews only
-
-     var starsPercentage = (googleRating) => {
-      var percent = googleRating / 5 * 100;
-      // console.log('Percent: ', percent + '%')
-      return percent + '%';
-    }
+     let shortReviewArr = this.state.reviewList.slice(0,3); // Return first 3 reviews only
+     let starsPercentage = (googleRating) => {
+       let percent = googleRating / 5 * 100;
+       return percent + '%';
+     }
 
      return (
        <div>
@@ -142,9 +122,6 @@ export default class Reviews extends React.Component {
                 <div className="reviews-details-ratings-stars-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
               </div>
             </div>
-
-
-
            </div>
            {shortReviewArr.map((review, index) =>
              <Review
@@ -160,5 +137,3 @@ export default class Reviews extends React.Component {
     );
    }
  }
-
-window.Reviews = Reviews

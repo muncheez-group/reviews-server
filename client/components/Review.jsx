@@ -16,46 +16,28 @@ export default class Review extends React.Component {
    })
  }
 
- generateStars(num) {
-   num = Math.floor(num)
-   var star = '★';
-   var emptyStar ='☆'
-   var result = '';
-   for (var i = 0; i < 5; i++) {
-     if (i<num) {
-       result += star;
-     } else {
-       result += emptyStar;
-       // console.log(result)
-     }
-   }
-   return result
- }
 
  render() {
-    var review = this.props.review[0]
-    var reviewBody = `${review.text}`;
-
-    var starsPercentage = (googleRating) => {
-     var percent = googleRating / 5 * 100;
+   let review = this.props.review[0]
+   let reviewBody = `${review.text}`;
+   let starsPercentage = (googleRating) => {
+     let percent = googleRating / 5 * 100;
      return percent + '%';
-    }
-
-    let component = null
-    if (!this.state.expanded) {
-      component = <LinesEllipsis
+   }
+   let component = null
+   if (!this.state.expanded) {
+     component = <LinesEllipsis
        text= {reviewBody}
        maxLine='3'
        ellipsis= '... See More'
        trimRight
        basedOn='letters'
-       />
-    } else if (this.state.expanded) {
-      component = reviewBody
-    }
-
-    return (
-      <div className="review-container">
+     />
+   } else if (this.state.expanded) {
+     component = reviewBody
+   }
+   return (
+     <div className="review-container">
         <div className="review-profile-pic">
           <img src={review.profile_photo_url} width={70} height={70}/>
         </div>

@@ -11,5 +11,6 @@ test('render a label', () => {
     const wrapper = shallow(
         <Description/>
     );
+    wrapper.instance().props
     expect(wrapper).toMatchSnapshot();
 });
