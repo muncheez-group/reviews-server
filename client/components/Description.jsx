@@ -33,7 +33,7 @@ export default class Description extends React.Component {
   fetchReviews() {
     let context = this;
     let id = window.location.href.split('/')[4]
-    axios.get(`http://localhost:3003/api/restaurants/${id}`)
+    axios.get(`http://54.67.32.191:3003/api/restaurants/${id}`)
     .then(({data}) => {
       this.setState({
         title: data.name,
