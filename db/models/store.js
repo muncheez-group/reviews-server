@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var mongoUrlDocker = 'mongodb://database/apateez-reviews';
 var mongoUrl = 'mongodb://localhost/apateez-reviews';
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrlDocker);
 // mongoose.connect(mongoUrlDocker);
 
 mongoose.connection.on('connected', function() {
@@ -12,7 +12,7 @@ mongoose.connection.on('connected', function() {
 
 mongoose.connection.on('error',function (err) {
   console.log('Mongoose default connection error: ' + err);
-  mongoose.connect(mongoUrlDocker)
+  mongoose.connect(mongoUrl)
 });
 
 var storeSchema = mongoose.Schema({
