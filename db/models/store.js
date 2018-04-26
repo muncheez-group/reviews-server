@@ -1,5 +1,10 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/apateez-reviews');
+
+var mongoUrlDocker = 'mongodb://database/apateez-reviews';
+var mongoUrl = 'mongodb://localhost/apateez-reviews';
+
+// mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrlDocker);
 
 var storeSchema = mongoose.Schema({
   place_id: {

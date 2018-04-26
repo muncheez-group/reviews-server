@@ -10,8 +10,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "build": "webpack -d --watch",
-    "start": "nodemon ./server/server.js",
-    "seed": "node ./seedDb.js"
+    "build:prod": "webpack -p",
+    "start": "node ./server/server.js",
+    "seed": "node ./seedDb.js",
+    "docker" : "npm run build:prod && npm run seed & npm run start"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -31,6 +33,7 @@
     "react-materialize": "^2.2.0",
     "react-modal": "^3.3.2",
     "react-native-view-more-text": "^1.4.3",
+    "react-test-renderer": "^16.3.2",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "webpack": "^3.11.0"
@@ -40,10 +43,8 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",
-    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.0",
-    "react-test-renderer": "^16.6.2",
     "style-loader": "^0.21.0"
   },
   "repository": {
