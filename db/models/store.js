@@ -3,8 +3,17 @@ var mongoose = require('mongoose');
 var mongoUrlDocker = 'mongodb://database/apateez-reviews';
 var mongoUrl = 'mongodb://localhost/apateez-reviews';
 
-// mongoose.connect(mongoUrl);
-mongoose.connect(mongoUrlDocker);
+mongoose.connect(mongoUrl);
+// mongoose.connect(mongoUrlDocker);
+
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose connection open')
+});
+
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
+  mongoose.connect(mongoUrlDocker)
+});
 
 var storeSchema = mongoose.Schema({
   place_id: {
@@ -30,7 +39,7 @@ var findAll = (callback) => {
 }
 
 var findOne = (id, callback) => {
-  // console.log('find one db triggered with ', id)
+  console.log('find one db triggered with ', id)
   return Store.find({ place_id: id}, callback);
 }
 

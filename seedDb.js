@@ -2,11 +2,11 @@ var fullList = require('./195-Zagat-AllData.json')
 var Stores = require('./db/models/store.js');
 var mongoose = require('mongoose');
 
-var mongoUrlDocker = 'mongodb://database/apateez-reviews';
-var mongoUrl = 'mongodb://localhost/apateez-reviews';
-
+// var mongoUrlDocker = 'mongodb://database/apateez-reviews';
+// var mongoUrl = 'mongodb://localhost/apateez-reviews';
+//
 // mongoose.connect(mongoUrl);
-mongoose.connect(mongoUrlDocker);
+// // mongoose.connect(mongoUrlDocker);
 
 var seedDb = (array) => {
   let counter = 0

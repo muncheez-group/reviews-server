@@ -30,7 +30,7 @@ app.get('/restaurants/:id', function(req, res) {
 
 app.get('/api/restaurants/:id', function(req, res) {
   var place_id = req.params.id
-  console.log('place_id IS :', place_id)
+  // console.log('place_id IS :', place_id)
   Stores.findOne(place_id)
   .then(function(data) {
     console.log('data ', data)
