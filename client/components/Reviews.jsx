@@ -65,7 +65,6 @@ export default class Reviews extends React.Component {
   }
 
   fetchReviews() {
-    let context = this;
     let id = window.location.href.split('/')[4]
     axios.get(`${BASE_URL}/api/restaurants/${id}`)
     .then(({data}) => {

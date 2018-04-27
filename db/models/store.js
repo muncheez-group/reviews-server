@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var mongoUrlDocker = 'mongodb://database/apateez-reviews';
-var mongoUrl = 'mongodb://localhost/apateez-reviews';
+const mongoUrlDocker = 'mongodb://database/apateez-reviews';
+const mongoUrl = 'mongodb://localhost/apateez-reviews';
 
 mongoose.connect(mongoUrl); // Try localhost first
 
@@ -14,7 +14,7 @@ mongoose.connection.on('error',function (err) {
   mongoose.connect(mongoUrlDocker)
 });
 
-var storeSchema = mongoose.Schema({
+const storeSchema = mongoose.Schema({
   place_id: {
     type: String,
     unique: true
@@ -30,20 +30,20 @@ var storeSchema = mongoose.Schema({
   rating: Number
 });
 
-var Store = mongoose.model('Store', storeSchema);
+const Store = mongoose.model('Store', storeSchema);
 
-var findAll = (callback) => {
+const findAll = (callback) => {
   // console.log('findall triggered')
    return Store.find({}).sort({createdAt: -1});
 }
 
-var findOne = (id, callback) => {
+const findOne = (id, callback) => {
   console.log('find one db triggered with ', id)
   return Store.find({ place_id: id}, callback);
 }
 
 
-var insertOne = (store, callback) => {
+const insertOne = (store, callback) => {
   // console.log('NEW STORE', store)
   Store.create(store, callback);
 }

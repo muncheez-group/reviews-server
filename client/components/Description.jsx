@@ -24,11 +24,9 @@ export default class Description extends React.Component {
     this.fetchReviews();
   }
 
-
   createMarkup() {
     return {__html: this.state.descriptionBody}; // Allow for bold text
   }
-
 
   fetchReviews() {
     let id = window.location.href.split('/')[4]
@@ -46,8 +44,6 @@ export default class Description extends React.Component {
       console.log('ERROR: ', err)
     })
   }
-
-
 
   render() {
     let priceRange = [];
@@ -82,9 +78,7 @@ export default class Description extends React.Component {
             <div className="description-ratings-label">SERVICE</div>
           </div>
         </div>
-
         <div className="description-body" dangerouslySetInnerHTML={this.createMarkup()}/>
-
       </div>
     );
   }

@@ -1,6 +1,9 @@
 ## NPM ##
 node_modules/
 
+## JEST ##
+coverage/
+
 ## Compiled files ##
 public/transpiled
 public/app.js
