@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
 
-const SERVER_URL = BASE_URL || 'http://127.0.0.1:3000'
-
 // Description app
 export default class Description extends React.Component {
   constructor(props) {
@@ -34,7 +32,7 @@ export default class Description extends React.Component {
 
   fetchReviews() {
     let id = window.location.href.split('/')[4]
-    axios.get(`${SERVER_URL}/api/restaurants/${id}`)
+    axios.get(`${BASE_URL}/api/restaurants/${id}`)
     .then(({data}) => {
       this.setState({
         title: data.name,
