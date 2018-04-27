@@ -4,6 +4,12 @@ var SRC_DIR = path.join(__dirname, '/client');
 var DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({
+      BASE_URL: JSON.stringify('http://54.215.215.188:3003'),
+      APIKEY: JSON.stringify('YOUR_API_KEY'),
+    })
+  ],
   context: __dirname + '/client',
   entry: './index.jsx',
   module: {

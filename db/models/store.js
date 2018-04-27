@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var mongoUrlDocker = 'mongodb://database/apateez-reviews';
 var mongoUrl = 'mongodb://localhost/apateez-reviews';
 
-mongoose.connect(mongoUrlDocker);
-// mongoose.connect(mongoUrlDocker);
+mongoose.connect(mongoUrl); // Try localhost first
 
 mongoose.connection.on('connected', function() {
   console.log('Mongoose connection open')
@@ -12,7 +11,7 @@ mongoose.connection.on('connected', function() {
 
 mongoose.connection.on('error',function (err) {
   console.log('Mongoose default connection error: ' + err);
-  mongoose.connect(mongoUrl)
+  mongoose.connect(mongoUrlDocker)
 });
 
 var storeSchema = mongoose.Schema({

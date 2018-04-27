@@ -5,6 +5,8 @@ import Description from './Description.jsx';
 import Modal from 'react-modal';
 import axios from 'axios';
 
+const SERVER_URL = BASE_URL || 'http://127.0.0.1:3000'
+
 const customStyles = { // modal styles
     overlay: {
       position: 'fixed',
@@ -67,7 +69,7 @@ export default class Reviews extends React.Component {
   fetchReviews() {
     let context = this;
     let id = window.location.href.split('/')[4]
-    axios.get(`http://54.215.215.188:3003/api/restaurants/${id}`)
+    axios.get(`${SERVER_URL}/api/restaurants/${id}`)
     .then(({data}) => {
       // console.log('data', data)
       this.setState({

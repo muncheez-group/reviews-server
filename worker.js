@@ -2,7 +2,7 @@ var rp = require('request-promise');
 const list = require('./ZagatData60.json')
 const fs = require('fs');
 
-
+// This file only needs to be run ONCE to do an API call and generate a new file.
 
 var getJSONfromList = (array) => {
   let counter = 0

@@ -2,10 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const app = express();
-// const port = process.env.PORT || 3003;
-const port =  3003;
+const port = process.env.PORT || 3003;
 const Stores = require('./../db/models/store.js');
-
 
 const bodyParser = require('body-parser');
 
@@ -15,12 +13,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use(bodyParser.json())
 
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/restaurants', express.static(path.join(__dirname, '../public')));
 
@@ -39,5 +35,5 @@ app.get('/api/restaurants/:id', function(req, res) {
 })
 
 app.listen(port, () => {
-  console.log(`server running at: http://localhost:${port}`);
+  console.log(`server running at PORT: ${port}`);
 });

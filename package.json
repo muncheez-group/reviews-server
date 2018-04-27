@@ -52,6 +52,9 @@
     "url": "git+https://github.com/apateez/reviews.git"
   },
   "jest": {
+    "globals": {
+      "BASE_URL" : "http://127.0.0.1:3000"
+    },
     "setupTestFrameworksScriptFile": [
       "./tests/__tests__/jestSetup.js"
     ],
