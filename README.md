@@ -1,13 +1,15 @@
 # Project Name
 
+Apateez Reviews Component
+
 > Project description
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/apateez/sidebar
+  - https://github.com/apateez/proxy-Oliver
+  - https://github.com/apateez/gallery
+  - https://github.com/apateez/nearby
 
 ## Table of Contents
 
@@ -17,7 +19,12 @@
 
 ## Usage
 
-> Some usage instructions
+1) run 'npm run seed' to seed MongoDB with data from Google places API.
+2) run 'npm run build' to run webpack --watch
+3) run 'npm start' to start server on port 3003.
+
+
+
 
 ## Requirements
 
@@ -36,4 +43,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-
