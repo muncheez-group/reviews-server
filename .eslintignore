@@ -1,0 +1,8 @@
+.eslint*
+**/webpack.config.js
+**/app.js
+**/node_modules
+**/public
+**/coverage
+**/tests
+**/worker.js

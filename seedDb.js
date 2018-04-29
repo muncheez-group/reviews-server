@@ -1,13 +1,12 @@
-var fullList = require('./195-Zagat-AllData.json')
-var Stores = require('./db/models/store.js');
-var mongoose = require('mongoose');
+const fullList = require('./195-Zagat-AllData.json');
+const Stores = require('./db/models/store.js');
+const mongoose = require('mongoose');
 
-var seedDb = (array) => {
-  let counter = 0
+const seedDb = (array) => {
+  let counter = 0;
 
   var createList = () => {
-
-    var obj = {
+    const obj = {
       place_id: array[counter].result.place_id,
       name: array[counter].result.name,
       reviews: array[counter].result.reviews,
@@ -15,30 +14,25 @@ var seedDb = (array) => {
       price_level: array[counter].result.price_level,
       neighborhood: array[counter].result.address_components[2].long_name,
       city: array[counter].result.address_components[3].long_name,
-      street: array[counter].result.address_components[1].long_name
-    }
+      street: array[counter].result.address_components[1].long_name,
+    };
 
 
     Stores.insertOne(obj, (err, content) => {
       if (err) {
-        console.log("ERROR IS", err)
-      } else {
-        console.log('CONTENT is ', content)
-        console.log('array.length is ', array.length)
-        console.log('counter is ', counter)
-        counter++;
-        if (counter < array.length) {
-          createList()
-        } else {
-          console.log(array.length)
-          console.log('counter is ', counter)
-          mongoose.disconnect();
-        }
+        return err;
       }
-    })
-  }
+      counter++;
+      if (counter < array.length) {
+        createList();
+      } else {
+        mongoose.disconnect();
+        return counter;
+      }
+    });
+  };
 
-  Stores.clearDb(() => createList())
-}
+  Stores.clearDb(() => createList());
+};
 
-seedDb(fullList)
+seedDb(fullList);
