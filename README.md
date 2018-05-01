@@ -6,10 +6,9 @@ Apateez Reviews Component
 
 ## Related Projects
 
-  - https://github.com/apateez/sidebar
-  - https://github.com/apateez/proxy-Oliver
-  - https://github.com/apateez/gallery
-  - https://github.com/apateez/nearby
+  - https://github.com/muncheez-group/nearby-server
+  - https://github.com/muncheez-group/gallery-server
+  - https://github.com/muncheez-group/sidebar-server
 
 ## Table of Contents
 
