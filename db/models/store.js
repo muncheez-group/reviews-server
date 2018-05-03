@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const mongoUrlDocker = 'mongodb://database/apateez-reviews';
-const mongoUrl = 'mongodb://localhost/apateez-reviews';
+const mongoUrlDocker = 'mongodb://database/muncheez-reviews';
+const mongoUrl = 'mongodb://localhost/muncheez-reviews';
 
 mongoose.connect(mongoUrl); // Try localhost first
 
