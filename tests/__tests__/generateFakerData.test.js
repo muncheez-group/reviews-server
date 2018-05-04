@@ -1,7 +1,7 @@
-const generateFakerData = require('../../db/__mocks__/generateFakerData');
+const generateFakerData = require('../../db/generateFakerData');
 
 const data = JSON.parse(generateFakerData());
-console.log(data)
+
 describe('Faker Data Generator', () => {
 
   test('should generate fake data with appropriate value types', () => {
@@ -24,4 +24,4 @@ describe('Faker Data Generator', () => {
     expect(data.rating).toBeGreaterThanOrEqual(1); 
     expect(data.rating).toBeLessThanOrEqual(5); 
   });
-})
+});
