@@ -16,7 +16,7 @@ mongoose.connection.on('error', (err) => {
 
 const storeSchema = mongoose.Schema({
   place_id: {
-    type: String,
+    type: Number,
     unique: true,
   },
   name: String,
