@@ -6,7 +6,7 @@ const stream = fs.createWriteStream('./fakerData.json');
 stream.write('[');
 
 const writeTenMillionTimes = () => {
-  let i = 100;
+  let i = 10e6;
   function write() {
     let ok = true;
     do {
