@@ -12,7 +12,6 @@ const writeTenMillionTimes = () => {
     do {
       i -= 1;
       if (i === 0) {
-        // last time!
         stream.write(generateData(), 'utf-8', () => {
           stream.write(']');
           stream.end();
@@ -23,8 +22,6 @@ const writeTenMillionTimes = () => {
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
       stream.once('drain', write);
     }
   }
