@@ -6,3 +6,5 @@
 **/coverage
 **/tests
 **/worker.js
+**/db/fakerData.json
+**/195-Zagat-AllData.json
