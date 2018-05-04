@@ -3,37 +3,10 @@ const moment = require('moment');
 const fs = require('fs');
 const stream = fs.createWriteStream('./fakerData.json');
 
-// SHAPE OF DATA
-// [
-//   { 
-//   result:
-//     { address_components: [
-//       {},
-//       {long_name: string}, STREET
-//       {long_name: string}, NEIGHBORHOOD
-//       {long_name: string}, CITY
-//     ],
-//       place_id: number,
-//       name: string,
-//       reviews: 
-//       [
-//         {
-//           author_name: string,
-//           profile_photo_url: string,
-//           rating: number,
-//           relative_time_description: string,
-//           text: string,
-//         }
-//       ],
-//     }
-//   }
-// ]
-
-var count = 0;
 
 const getRandomNum = function() {
   var min = 1;
-  var max = 10;
+  var max = 6;
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -43,60 +16,63 @@ const generateReviews = function() {
     reviews.push(
       {
         author_name: faker.fake("{{name.firstName}} {{name.lastName}}"),
-        profile_photo_url: `https://www.muncheez.com/images/${faker.random.number(100)}.jpg`,
+        profile_photo_url: `https://www.muncheez.com/images/${faker.random.number(70)}.jpg`,
         rating: faker.finance.amount(1, 5, 2),
         relative_time_description: moment(faker.date.past(1)).startOf('month').fromNow(),
-        text: faker.lorem.paragraphs(),
+        text: faker.lorem.paragraph(),
       }
     )
   }
   return reviews; 
 }
 
-const generateAddress = function() {
-  var address = [
-    {},
-    { long_name: faker.address.streetName() },
-    { long_name: faker.address.county() },
-    { long_name: faker.address.city() },
-  ]
-  return address; 
-}
+var count = 0;
 
 const generateData = () => {
-  var data = {};
-  data.result = {
-    address_components: generateAddress(),
+  var data = {
     place_id: count++,
     name: faker.company.companyName(),
-    rating: faker.finance.amount(1, 5, 2),
     price_level: faker.random.number({ min: 1, max: 4 }),
+    neighborhood: faker.address.county(),
+    city: faker.address.city(),
+    street: faker.address.streetName(),
+    rating: faker.finance.amount(1, 5, 2),
     reviews: generateReviews(),
   };
-  return data;
+  return JSON.stringify(data);
 }
 
 stream.write("[");
 
-var j = 0;
+function writeTenMillionTimes() {
+  let i = 10e6;
+  write();
+  function write() {
+    let ok = true;
+    do {
+      i--;
+      if (i === 0) {
+        // last time!
+        stream.write(generateData(), 'utf-8', () => {
+          stream.write("]");
+          stream.end();
+        });
+      } else {
+        ok = stream.write(generateData(), 'utf-8');
+        stream.write(',');
 
-const writeFakerData = function () {
-  while (j < 5) {
-    stream.write(JSON.stringify(generateData()));
-  
-    if (j !== 4) {
-      stream.write(',');
+        if (i % 500000 === 0) {
+          console.log(i)
+        }
+        
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      // had to stop early!
+      // write some more once it drains
+      stream.once('drain', write);
     }
-    j++;
   }
 }
 
-stream.on('drain', function() {
-  writeFakerData();
-});
-
-writeFakerData();
-
-stream.write("]");
-
-stream.end();
+writeTenMillionTimes();
