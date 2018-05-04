@@ -1,15 +1,9 @@
 const faker = require('faker');
 const moment = require('moment');
 
-const getRandomNum = function () {
-  const min = 1;
-  const max = 6;
-  return Math.floor(Math.random() * ((max - min) + 1)) + min;
-};
-
 const generateReviews = function () {
   const reviews = [];
-  for (let i = 0; i < getRandomNum(); i += 1) {
+  for (let i = 0; i < faker.random.number({ min: 1, max: 6 }); i += 1) {
     reviews.push({
       author_name: faker.fake('{{name.firstName}} {{name.lastName}}'),
       profile_photo_url: `https://www.muncheez.com/images/${faker.random.number(70)}.jpg`,
