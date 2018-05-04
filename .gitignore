@@ -7,6 +7,7 @@ coverage/
 ## Compiled files ##
 public/transpiled
 public/app.js
+db/fakerData.json
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
