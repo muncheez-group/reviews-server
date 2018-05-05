@@ -1,7 +1,7 @@
 const fs = require('fs');
-const generateData = require('./generateFakerData.js');
+const generateData = require('./generateJSONData.js');
 
-const stream = fs.createWriteStream('./fakerData.json');
+const stream = fs.createWriteStream('./data/fakerData.json');
 
 stream.write('[');
 
