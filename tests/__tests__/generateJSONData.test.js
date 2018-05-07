@@ -1,8 +1,8 @@
-const generateFakerData = require('../../db/generateFakerData');
+const generateData = require('../../db/generateJSONData.js');
 
-const data = JSON.parse(generateFakerData());
+const data = JSON.parse(generateData());
 
-describe('Faker Data Generator', () => {
+describe('JSON Faker Data Generator', () => {
 
   test('should generate fake data with appropriate value types', () => {
     expect(typeof data).toBe('object');
@@ -20,7 +20,7 @@ describe('Faker Data Generator', () => {
     expect(data.price_level).toBeLessThanOrEqual(4); 
   });
 
-  test('rating should be an integer before 1 and 4, inclusive', () => {
+  test('rating should be an integer before 1 and 5, inclusive', () => {
     expect(data.rating).toBeGreaterThanOrEqual(1); 
     expect(data.rating).toBeLessThanOrEqual(5); 
   });
