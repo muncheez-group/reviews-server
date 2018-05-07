@@ -40,4 +40,5 @@ const generateDescription = () => {
 module.exports = { 
   generateDescription, 
   generateReviews,
+  generateReview,
 };
