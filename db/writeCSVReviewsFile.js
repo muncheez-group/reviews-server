@@ -7,7 +7,7 @@ const header = 'place_id,author_name,profile_photo_url,rating,relative_time_desc
 stream.write(header);
 
 const writeTenMillionTimes = () => {
-  let i = 5;
+  let i = 10e6;
   let j = 0;
   function write() {
     let ok = true;

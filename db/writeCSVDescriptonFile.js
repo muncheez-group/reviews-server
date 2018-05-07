@@ -1,5 +1,5 @@
 const fs = require('fs');
-const generateDescription = require('./generateCSVData.js');
+const { generateDescription } = require('./generateCSVData.js');
 
 const stream = fs.createWriteStream('./data/descriptions.csv');
 const header = 'place_id,name,price_level,neighborhood,city,street,rating\n';
@@ -7,7 +7,7 @@ const header = 'place_id,name,price_level,neighborhood,city,street,rating\n';
 stream.write(header);
 
 const writeTenMillionTimes = () => {
-  let i = 5;
+  let i = 10e6;
   function write() {
     let ok = true;
     do {
