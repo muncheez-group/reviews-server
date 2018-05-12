@@ -8,3 +8,5 @@
 **/worker.js
 **/db/fakerData.json
 **/195-Zagat-AllData.json
+**/newrelic.copy.js
+**/newrelic.js
