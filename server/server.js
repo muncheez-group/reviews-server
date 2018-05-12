@@ -3,14 +3,14 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const redis = require('redis');
+
 const client = redis.createClient();
 
 const app = express();
 app.locals.newrelic = newrelic;
 
-client.on('connect', () => console.log('Redis connected'))
-
-client.on('error', (error) => console.log('Error connecting to Redis', error))
+client.on('connect', () => console.log('Redis connected'));
+client.on('error', error => console.log('Error connecting to Redis', error));
 
 const port = process.env.PORT || 3003;
 const Stores = require('./../db/models/store.js'); // MONGO
@@ -37,7 +37,7 @@ app.get('/restaurants/:id', (req, res) => {
 
 app.get('/api/restaurants/:id', (req, res) => {
   const place_id = req.params.id;
-  
+
   /************************** MONGO QUERIES **************************/
 
   Stores.findOne(place_id)
@@ -49,7 +49,7 @@ app.get('/api/restaurants/:id', (req, res) => {
 
   // pg.getDescription(place_id)
   //   .then(data => result = data.rows[0])
-  //   .then(() => 
+  //   .then(() =>
   //     pg.getReviews(place_id)
   //       .then(data => {
   //         let reviews = []
