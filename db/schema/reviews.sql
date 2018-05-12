@@ -4,6 +4,5 @@ create table reviews (
   profile_photo_url varchar(255),
   review_rating smallint not null,
   relative_time_description varchar(255) not null,
-  text varchar not null,
-  foreign key(place_id) references restaurants(place_id)
+  text varchar not null
 );
