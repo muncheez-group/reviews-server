@@ -38,11 +38,29 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/api/restaurants/:id', (req, res) => {
   const place_id = req.params.id;
 
+  client.get(`place_id:${place_id}`, (err, reply) => {
+    if (err) {
+      return console.error(err);
+    } else if (reply) {
+      // console.log('in redis', reply);
+      res.send(JSON.parse(reply));
+    } else {
+      Stores.findOne(place_id)
+        .then(data => {
+          // console.log('looking in mongo')
+          client.set(`place_id:${place_id}`, JSON.stringify(data[0]))
+          // console.log('redis.set ran?')
+          return res.send(data[0])
+        })
+        .catch(error => res.send(error));
+    }
+  })
+
   /************************** MONGO QUERIES **************************/
 
-  Stores.findOne(place_id)
-    .then(data => res.send(data[0]))
-    .catch(error => res.send(error));
+  // Stores.findOne(place_id)
+  //   .then(data => res.send(data[0]))
+  //   .catch(error => res.send(error));
 
   /************************** POSTGRES QUERIES **************************/
   // let result;
