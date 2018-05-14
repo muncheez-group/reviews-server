@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const mongoUrlDocker = 'mongodb://database/muncheez-reviews';
 const mongoUrl = 'mongodb://localhost/muncheez-reviews';
 
-mongoose.connect(mongoUrl); // Try localhost first
+mongoose.connect(mongoUrl, {poolSize: 10}); // Try localhost first
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose connection open');
