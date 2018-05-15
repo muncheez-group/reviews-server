@@ -3,82 +3,76 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const redis = require('redis');
+const cluster = require('cluster');
 
-const client = redis.createClient();
+if (cluster.isMaster) {
+  var numWorkers = require('os').cpus().length;
+  console.log('Master cluster setting up ' + numWorkers + ' workers...');
 
-const app = express();
-app.locals.newrelic = newrelic;
+  for (var i = 0; i < numWorkers; i++) {
+    cluster.fork();
+  }
 
-client.on('connect', () => console.log('Redis connected'));
-client.on('error', error => console.log('Error connecting to Redis', error));
+  cluster.on('online', function(worker) {
+    console.log('Worker ' + worker.process.pid + ' is online');
+  });
 
-const port = process.env.PORT || 3003;
-const Stores = require('./../db/models/store.js'); // MONGO
-// const pg = require('./../db/pg_server.js'); // PSQL
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+    console.log('Starting a new worker');
+    cluster.fork();
+  });
+} else {
+  const client = redis.createClient();
 
-const bodyParser = require('body-parser');
+  const app = express();
+  app.locals.newrelic = newrelic;
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+  client.on('connect', () => console.log('Redis connected'));
+  client.on('error', error => console.log('Error connecting to Redis', error));
 
-app.use(morgan('dev'));
-app.use(bodyParser.json());
+  const port = process.env.PORT || 3003;
+  const Stores = require('./../db/models/store.js'); // MONGO
 
-app.use(bodyParser.urlencoded({ extended: false }));
+  const bodyParser = require('body-parser');
 
-app.use('/restaurants', express.static(path.join(__dirname, '../public')));
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
 
-app.get('/restaurants/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+  app.use(morgan('dev'));
+  app.use(bodyParser.json());
 
-app.get('/api/restaurants/:id', (req, res) => {
-  const place_id = req.params.id;
+  app.use(bodyParser.urlencoded({ extended: false }));
 
-  client.get(`place_id:${place_id}`, (err, reply) => {
-    if (err) {
-      return console.error(err);
-    } else if (reply) {
-      // console.log('in redis', reply);
-      res.send(JSON.parse(reply));
-    } else {
-      Stores.findOne(place_id)
-        .then(data => {
-          // console.log('looking in mongo')
-          client.set(`place_id:${place_id}`, JSON.stringify(data[0]))
-          // console.log('redis.set ran?')
-          return res.send(data[0])
-        })
-        .catch(error => res.send(error));
-    }
-  })
+  app.use('/restaurants', express.static(path.join(__dirname, '../public')));
 
-  /************************** MONGO QUERIES **************************/
+  app.get('/restaurants/:id', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+  });
 
-  // Stores.findOne(place_id)
-  //   .then(data => res.send(data[0]))
-  //   .catch(error => res.send(error));
+  app.get('/api/restaurants/:id', (req, res) => {
+    const place_id = req.params.id;
 
-  /************************** POSTGRES QUERIES **************************/
-  // let result;
+    client.get(`place_id:${place_id}`, (err, reply) => {
+      if (err) {
+        return console.error(err);
+      } else if (reply) {
+        res.send(JSON.parse(reply));
+      } else {
+        Stores.findOne(place_id)
+          .then(data => {
+            client.set(`place_id:${place_id}`, JSON.stringify(data[0]))
+            return res.send(data[0])
+          })
+          .catch(error => res.send(error));
+      }
+    });
+  });
 
-  // pg.getDescription(place_id)
-  //   .then(data => result = data.rows[0])
-  //   .then(() =>
-  //     pg.getReviews(place_id)
-  //       .then(data => {
-  //         let reviews = []
-  //         data.rows.forEach(review => reviews.push([review]))
-  //         result.reviews = reviews;
-  //         res.send(result)
-  //       })
-  //       .catch(err => res.send(err))
-  //   )
-});
-
-app.listen(port, () => {
-  console.log(`server running at PORT: ${port}`);
-});
+  app.listen(port, () => {
+    console.log(`server running at PORT: ${port}`);
+  });
+}
