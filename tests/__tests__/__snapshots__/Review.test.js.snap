@@ -9,7 +9,7 @@ exports[`Review should render correctly 1`] = `
   >
     <img
       height={70}
-      src="https://lh5.googleusercontent.com/-Ke1fzBZDHB4/AAAAAAAAAAI/AAAAAAAAjWI/mygiCr_mb3c/s128-c0x00000000-cc-rp-mo-ba2/photo.jpg"
+      src="AAAAAAAAAAI"
       width={70}
     />
   </div>

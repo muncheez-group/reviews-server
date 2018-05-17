@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Parent Component should render App 1`] = `
+<div>
+  <Description />
+  <Reviews />
+</div>
+`;

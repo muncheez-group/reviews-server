@@ -7,14 +7,15 @@ coverage/
 ## Compiled files ##
 public/transpiled
 public/app.js
+public/app-server.js
 db/data/fakerData.json
 db/data/descriptions.csv
 db/data/reviews.csv
-newrelic_agent.log
 dump.rdb
 
 # New Relic #
 newrelic.js
+newrelic_agent.log
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
