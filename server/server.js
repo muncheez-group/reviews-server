@@ -23,7 +23,7 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  const client = redis.createClient();
+  const client = redis.createClient(6379, '34.217.24.155');
 
   const app = express();
   app.locals.newrelic = newrelic;
@@ -64,7 +64,7 @@ if (cluster.isMaster) {
       } else {
         Stores.findOne(place_id)
           .then(data => {
-            client.set(`place_id:${place_id}`, JSON.stringify(data[0]))
+            client.setex(`place_id:${place_id}`, 900, JSON.stringify(data[0]))
             return res.send(data[0])
           })
           .catch(error => res.send(error));
