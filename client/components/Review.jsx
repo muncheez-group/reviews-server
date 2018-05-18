@@ -39,11 +39,7 @@ export default class Review extends React.Component {
    return (
      <div className="review-container">
         <div className="review-profile-pic">
-        {/* s3 img link: https://s3-us-west-2.amazonaws.com/muncheez-reviews/ 
-          concat with image number later
-          don't want to send a bunch of requests to s3 right now
-        */}
-          <img src={review.profile_photo_url.split('/')[4]} width={70} height={70}/>
+          <img src={`https://s3-us-west-2.amazonaws.com/muncheez-reviews/${review.profile_photo_url.split('/')[4]}`} width={70} height={70}/>
         </div>
         <div className="review-column" onClick={() => this.expandDescription()}>
           <div className="review-column-name">{review.author_name}</div>
