@@ -1,8 +1,8 @@
-# Project Name
+# Muncheez
 
-Apateez Reviews Component
+Muncheez Reviews Component
 
-> Project description
+> Restaurant description and related reviews microservice 
 
 ## Related Projects
 
